@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, useState} from 'react'
+import Editt from './Editt'
+import Main from './Main'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = (props) => {
+
+const [trr,setTrr] = useState("true")
+const [data,setData] = useState("")
+const [sendmain,setsendmain]=useState([])
+
+const backdata = (rdata) => {
+   setsendmain(rdata);
+   setTrr("true")
 }
 
-export default App;
+const edit4 = () => {
+    setTrr("false")
+}
+
+
+const result = (data) =>{
+  const a = data
+  setData(a)
+}
+  return (
+    <div>
+      {trr==="true" ?  <Main sendmain={sendmain} edittt= {edit4} res= {result}  />  : 
+      <center><div><Editt backdata={backdata} flowdata = {data}/> </div></center> }
+    </div>
+  )
+}
+export default App
+
+
